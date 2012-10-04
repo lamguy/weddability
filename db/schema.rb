@@ -20,4 +20,26 @@ ActiveRecord::Schema.define(:version => 20121004223609) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "pages", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "weddpages", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "weddschema_migrations", :id => false, :force => true do |t|
+    t.string "version", :null => false
+  end
+
+  add_index "weddschema_migrations", ["version"], :name => "weddunique_schema_migrations", :unique => true
+
 end
