@@ -1,3 +1,7 @@
 <h1>Hello rails!</h1>
 
-<%= link_to "My blog", pages_path %>
+<ul class="hmenu">
+  <%= render 'accounts/menu/registration_items' %>
+  <%= render 'accounts/menu/login_items' %>
+</ul>
+<%= yield %>
