@@ -1,4 +1,6 @@
 Weddability::Application.routes.draw do
+  resources :pages
+
   devise_for :accounts
 
   get "home/index"
