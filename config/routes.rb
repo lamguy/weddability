@@ -1,4 +1,6 @@
 Weddability::Application.routes.draw do
+  mount RedactorRails::Engine => '/redactor_rails'
+
   resources :pages
 
   devise_for :accounts

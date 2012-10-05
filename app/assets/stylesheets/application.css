@@ -12,5 +12,6 @@
  *= require skeleton.css
  *= require layout.css
  *= require_self
+ *= require redactor-rails
  *= require_tree .
  */
