@@ -1,4 +1,7 @@
 Weddability::Application.routes.draw do
+
+  match "/robots.txt" => RobotsGenerator
+
   mount RedactorRails::Engine => '/redactor_rails'
 
   get ':slug' => 'pages#view'
