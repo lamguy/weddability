@@ -1,15 +1,5 @@
 <%= javascript 'pages.js.coffee' %>
 
-<% if account_signed_in? %>
-  <li>
-  <%= "Howdy #{current_account.email}! " %><%= link_to('Logout', destroy_account_session_path, :method => :delete) %>        
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Login', new_account_session_path)  %>  
-  </li>
-<% end %>
-
 <h1>Listing pages</h1>
 
 <table>

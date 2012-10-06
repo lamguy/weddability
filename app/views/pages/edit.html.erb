@@ -1,5 +1,15 @@
 <h1>Editing page</h1>
 
+<% if account_signed_in? %>
+  <li>
+  <%= "Howdy #{current_account.email}! " %><%= link_to('Logout', destroy_account_session_path, :method => :delete) %>        
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login', new_account_session_path)  %>  
+  </li>
+<% end %>
+
 <%= render 'form' %>
 
 <%= link_to 'Show', @page %> |
