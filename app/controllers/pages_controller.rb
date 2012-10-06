@@ -23,6 +23,15 @@ class PagesController < ApplicationController
     end
   end
 
+  def view
+    @page = Page.find_by_slug(params[:slug]) || not_found
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @page }
+    end
+  end
+
   # GET /pages/new
   # GET /pages/new.json
   def new

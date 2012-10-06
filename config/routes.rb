@@ -1,7 +1,8 @@
 Weddability::Application.routes.draw do
   mount RedactorRails::Engine => '/redactor_rails'
 
-  resources :pages
+  get ':slug' => 'pages#view'
+  resources :pages, :except => [:show]
 
   devise_for :accounts
 
