@@ -4,12 +4,13 @@ Weddability::Application.routes.draw do
 
   mount RedactorRails::Engine => '/redactor_rails'
 
-  get ':slug' => 'pages#view'
   resources :pages, :except => [:show]
 
   devise_for :accounts
 
   get "home/index"
+
+  get ':slug' => 'pages#view'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
