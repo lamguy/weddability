@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :content %><br />
-    <%= text_area_tag :content, "", :class => "redactor", :rows => 40, :cols => 120 %>
+    <%= f.text_area :content, :class => "redactor", :rows => 40, :cols => 120 %>
   </div>
   <div class="actions">
     <%= f.submit %>
