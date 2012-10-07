@@ -48,7 +48,7 @@ gem 'carmen-rails'
 gem 'braintree'
 
 group :development, :test do
-	gem 'rspec', '2.0.0'
-	gem 'rspec-rails', '2.0.0'
- 	gem 'webrat'
+	gem 'rspec', '2.6.0'
+	gem 'rspec-rails', '2.6.1'
+	gem 'capybara'
 end
