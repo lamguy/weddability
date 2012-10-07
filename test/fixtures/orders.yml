@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  account: 
+  card_type: MyString
+  card_number: MyString
+  card_expired_on: 2012-10-07
+  address: 
+
+two:
+  account: 
+  card_type: MyString
+  card_number: MyString
+  card_expired_on: 2012-10-07
+  address: 

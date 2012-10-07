@@ -10,6 +10,7 @@ class Account < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :pages
   has_many :addresses
+  has_many :orders
 
   def full_name
   	[first_name, last_name].join(" ")

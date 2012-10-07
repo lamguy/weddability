@@ -1,0 +1,34 @@
+ <%= javascript 'orders.js.coffee' %>
+
+<h1>Listing orders</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+          <th>Full name</th>
+          <th>Card number</th>
+          <th>Card expired on</th>
+          <th>Address</th>
+          <th></th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% @orders.each do |order| %>
+    <tr>
+              <td><%= order.account.first_name + " " + order.account.last_name %></td>
+              <td><%= order.card_number %></td>
+              <td><%= order.card_expired_on %></td>
+              <td><%= order.address.street_address %></td>
+              <td><%= link_to 'Show', order %> 
+            <%= link_to 'Edit', edit_order_path(order) %> 
+            <%= link_to 'Destroy', order, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Order', new_order_path %>

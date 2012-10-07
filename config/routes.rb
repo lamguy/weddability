@@ -1,5 +1,7 @@
 Weddability::Application.routes.draw do
 
+  resources :orders
+
   resources :addresses
 
   match "/robots.txt" => RobotsGenerator
