@@ -1,5 +1,7 @@
 Weddability::Application.routes.draw do
 
+  resources :addresses
+
   match "/robots.txt" => RobotsGenerator
 
   mount RedactorRails::Engine => '/redactor_rails'

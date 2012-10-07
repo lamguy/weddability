@@ -9,6 +9,7 @@ class Account < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
   has_many :pages
+  has_many :addresses
 
   def full_name
   	[first_name, last_name].join(" ")

@@ -1,0 +1,46 @@
+ <%= javascript 'addresses.js.coffee' %>
+
+<h1>Listing addresses</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Company</th>
+          <th>Street address</th>
+          <th>Extended address</th>
+          <th>City</th>
+          <th>Zip</th>
+          <th>Country</th>
+          <th>Default</th>
+          <th>Account</th>
+          <th></th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% @addresses.each do |address| %>
+    <tr>
+              <td><%= address.first_name %></td>
+              <td><%= address.last_name %></td>
+              <td><%= address.company %></td>
+              <td><%= address.street_address %></td>
+              <td><%= address.extended_address %></td>
+              <td><%= address.city %></td>
+              <td><%= address.zip %></td>
+              <td><%= address.country %></td>
+              <td><%= address.default %></td>
+              <td><%= address.account %></td>
+              <td><%= link_to 'Show', address %> 
+            <%= link_to 'Edit', edit_address_path(address) %> 
+            <%= link_to 'Destroy', address, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Address', new_address_path %>
