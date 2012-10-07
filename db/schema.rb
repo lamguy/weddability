@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121007184533) do
+ActiveRecord::Schema.define(:version => 20121007193716) do
 
   create_table "accounts", :force => true do |t|
     t.string   "customer_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20121007184533) do
     t.integer  "account_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "state"
   end
 
   add_index "addresses", ["account_id"], :name => "index_wedd_addresses_on_account_id"
