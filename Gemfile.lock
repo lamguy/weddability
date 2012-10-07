@@ -30,6 +30,8 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
+    braintree (2.18.0)
+      builder (>= 2.0.0)
     builder (3.0.3)
     cancan (1.6.7)
     carrierwave (0.6.2)
@@ -123,6 +125,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  braintree
   cancan
   carrierwave
   coffee-rails (~> 3.2.1)
