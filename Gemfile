@@ -43,5 +43,6 @@ gem 'jquery-rails'
 # gem 'ruby-debug'
 gem 'devise'
 gem 'cancan'
+gem 'nested_scaffold'
 
 gem 'braintree'
