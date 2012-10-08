@@ -24,7 +24,7 @@ end
 gem 'redactor-rails'
 gem "carrierwave"
 gem "mini_magick"
-
+gem 'nokogiri'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

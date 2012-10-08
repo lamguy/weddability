@@ -1,0 +1,244 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"update",
+				"update_attributes"
+			],
+			[
+				"tra",
+				"transaction"
+			],
+			[
+				"res",
+				"result"
+			],
+			[
+				"card",
+				"card_number"
+			],
+			[
+				"customer",
+				"customer_id"
+			],
+			[
+				"create",
+				"create"
+			],
+			[
+				"su",
+				"successfully"
+			],
+			[
+				"redirect_",
+				"redirect_url"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/Ruby/Ruby.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"Snippet: ",
+				"Snippet: form_for with errors"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Controin",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/me/dev/projects/me/rails/weddability/.gitignore",
+		"/Users/me/dev/projects/me/rails/weddability/app/controllers/orders_controller.rb",
+		"/Users/me/dev/projects/me/rails/weddability/app/models/account.rb",
+		"/Users/me/dev/projects/me/rails/weddability/app/models/order_transaction.rb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/orders/index.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/app/models/address.rb",
+		"/Users/me/dev/projects/me/rails/weddability/app/models/order.rb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/orders/_form.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/app/controllers/addresses_controller.rb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/addresses/_form.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/config/initializers/braintree.rb",
+		"/Users/me/dev/projects/me/rails/weddability/Gemfile",
+		"/Users/me/dev/projects/me/rails/weddability/app/controllers/payment_controller.rb",
+		"/Users/me/dev/projects/me/rails/weddability/db/migrate/20121007181333_add_customer_id_to_account.rb",
+		"/Users/me/dev/projects/me/rails/weddability/config/environments/development.rb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/payment/_form.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/orders/new.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/payment/new.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/config/initializers/secret_token.rb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/pages/_form.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/config/routes.rb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/addresses/index.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/pages/index.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/lib/templates/erb/scaffold/index.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/addresses/new_address.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/addresses/all.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/app/controllers/accounts/addresses_controller.rb",
+		"/Users/me/dev/projects/me/rails/weddability/app/models/accounts.rb",
+		"/Users/me/dev/projects/me/rails/weddability/app/assets/javascripts/application.js",
+		"/Users/me/dev/projects/me/rails/weddability/config/database.yml",
+		"/Users/me/dev/projects/me/rails/weddability/app/assets/stylesheets/application.css",
+		"/Users/me/dev/projects/me/rails/weddability/app/assets/javascripts/redactor-rails/config.js",
+		"/Users/me/dev/projects/me/rails/weddability/app/models/ability.rb",
+		"/Users/me/dev/projects/me/rails/weddability/app/controllers/application_controller.rb",
+		"/Users/me/dev/projects/me/rails/weddability/app/controllers/pages_controller.rb",
+		"/Users/me/dev/projects/me/rails/weddability/db/migrate/20121006055211_add_slug_to_pages.rb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/pages/view.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/app/models/page.rb",
+		"/Users/me/dev/projects/me/rails/weddability/lib/robots_generator.rb",
+		"/Users/me/dev/projects/me/rails/weddability/config/application.rb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/pages/edit.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/app/assets/stylesheets/base.css",
+		"/Users/me/dev/projects/me/rails/weddability/app/assets/stylesheets/layout.css",
+		"/Users/me/dev/projects/me/rails/weddability/db/migrate/20121006120244_add_first_name_and_last_name_to_account.rb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/accounts/registrations/edit.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/accounts/registrations/new.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/pages/new.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/config/environments/production.rb",
+		"/Users/me/dev/projects/me/rails/weddability/config/robots.txt",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/pages/show.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/config/tinymce.yml",
+		"/opt/local/etc/mysql5/my.cnf",
+		"/Users/me/.profile",
+		"/Users/me/dev/projects/me/rails/weddability/weddability.sublime-workspace",
+		"/Users/me/dev/projects/me/rails/weddability/weddability.sublime-project",
+		"/Users/me/dev/projects/me/rails/weddability/cd",
+		"/Users/me/Library/Application Support/Sublime Text 2/Packages/LiveReload/LiveReload.sublime-settings",
+		"/etc/hosts",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/accounts/menu/_login_items_html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/accounts/passwords/new.html.erb",
+		"/Users/me/dev/projects/me/rails/weddability/app/views/accounts/sessions/new.html.erb",
+		"/etc/apache2/httpd.conf"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Addres",
+			"get"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.sftp":
+	{
+		"height": 0.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 294.0,
+	"status_bar_visible": true
+}
