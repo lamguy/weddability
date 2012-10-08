@@ -7,6 +7,7 @@ class Order < ActiveRecord::Base
 
   accepts_nested_attributes_for :address
 
-  validates :card_number, :presence => true
+  validates_presence_of :card_number
+  validates_credit_card_number :card_number
 
 end
