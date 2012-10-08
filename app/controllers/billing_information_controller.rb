@@ -1,0 +1,2 @@
+class BillingInformationController < ApplicationController
+end
