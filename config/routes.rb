@@ -6,6 +6,9 @@ Weddability::Application.routes.draw do
 
   resources :addresses
 
+  get '/billing' => 'billing_information#show', :as => 'billing'
+  post '/billing' => 'billing_information#create', :as => 'billing'
+
   match "/robots.txt" => RobotsGenerator
 
   mount RedactorRails::Engine => '/redactor_rails'
