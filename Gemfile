@@ -46,6 +46,7 @@ gem 'cancan'
 gem 'carmen-rails'
 
 gem 'braintree'
+gem 'creditcard'
 
 group :development, :test do
 	gem 'rspec', '2.6.0'
