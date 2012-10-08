@@ -62,21 +62,28 @@ class OrdersController < ApplicationController
         }
       )
 
+      # No order# has yet been associated to this transaction. The idea is to keep tracking all transaction, either failure or success
       transaction = OrderTransaction.new(:result => @result)
       transaction.save
 
       if @result.success?
-        current_account.update_attributes(:customer_id => @result.customer.id)
 
         @subscribe = Braintree::Subscription.create(
           :payment_method_token => @result.customer.credit_cards[0].token,
           :plan_id => "v28w"
         )
 
+        current_account.update_attributes(
+          :customer_id => @result.customer.id,
+          :payment_token => @result.customer.credit_cards[0].token
+        )
+
         respond_to do |format|
           if @order.save
 
+            # Now, order has ben saved, we should associate order with transaction
             transaction.update_attributes(:order => @order)
+            
             format.html { redirect_to @order, :notice => 'Order was successfully created' }
             format.json { render :json => @order, :status => :created, :location => @order }
           else

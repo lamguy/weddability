@@ -10,10 +10,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121007204940) do
+ActiveRecord::Schema.define(:version => 20121008111921) do
 
   create_table "accounts", :force => true do |t|
     t.string   "customer_id"
+    t.string   "payment_token"
     t.string   "email",                  :default => "",    :null => false
     t.string   "first_name"
     t.string   "last_name"
