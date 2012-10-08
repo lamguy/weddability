@@ -13,6 +13,4 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-weddability.sublime*
-/config/database.yml
 .DS_Store
