@@ -44,6 +44,8 @@ class OrdersController < ApplicationController
     @order = current_account.orders.new(params[:order])
 
     @result = Braintree::Customer.create(
+      :first_name => @order.address.first_name,
+      :last_name => @order.address.last_name,
       :credit_card => {
         :number => @order.card_number,
         :expiration_date => '05/2015',
