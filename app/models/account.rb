@@ -6,7 +6,7 @@ class Account < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :customer_id, :first_name, :last_name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :customer_id, :payment_token, :first_name, :last_name, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
   has_many :pages
   has_many :addresses

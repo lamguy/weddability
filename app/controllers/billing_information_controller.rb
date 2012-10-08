@@ -58,7 +58,7 @@ class BillingInformationController < ApplicationController
             # Now, order has ben saved, we should associate order with transaction
             transaction.update_attributes(:order => @order)
             
-            format.html { redirect_to :billing_url, :notice => 'Order was successfully created' }
+            format.html { redirect_to :billing, :notice => 'Order was successfully created' }
             format.json { render :json => @order, :status => :created, :location => @order }
           else
             format.html { render :action => "show" }
