@@ -16,4 +16,8 @@ class Account < ActiveRecord::Base
   	[first_name, last_name].join(" ")
   end
 
+  def self.is_customer? account
+    account.customer_id? && account.payment_token?
+  end
+
 end

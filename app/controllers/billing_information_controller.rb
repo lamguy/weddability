@@ -3,8 +3,13 @@ class BillingInformationController < ApplicationController
   # GET /orders/new
   # GET /orders/new.json
   def show
-    @order = Order.new
-    @order.build_address
+
+  	if Account.is_customer? current_account
+  	  @order = Order.where("account_id=?", current_account).last
+  	else
+	  @order = Order.new
+	  @order.build_address
+  	end
 
     respond_to do |format|
       format.html # new.html.erb
