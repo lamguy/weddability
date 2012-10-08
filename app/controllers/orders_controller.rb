@@ -43,15 +43,47 @@ class OrdersController < ApplicationController
   def create
     @order = current_account.orders.new(params[:order])
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, :notice => 'Order was successfully created.' }
-        format.json { render :json => @order, :status => :created, :location => @order }
-      else
+    @result = Braintree::Customer.create(
+      :credit_card => {
+        :number => @order.card_number,
+        :expiration_date => '05/2015',
+        :billing_address => {
+          :street_address => @order.address.street_address,
+          :extended_address => @order.address.extended_address,
+          :locality => @order.address.city,
+          :region => @order.address.state,
+          :postal_code => @order.address.zip,
+          :country_code_alpha2 => @order.address.country
+        }
+      }
+    )
+
+    transaction = OrderTransaction.new(:result => @result)
+    transaction.save
+
+    if @result.success?
+      respond_to do |format|
+        if @order.save
+          transaction.update_attributes(:order => @order)
+          format.html { redirect_to @order, :notice => 'Order was successfully created' }
+          format.json { render :json => @order, :status => :created, :location => @order }
+        else
+          format.html { render :action => "new" }
+          format.json { render :json => @order.errors, :status => :unprocessable_entity }          
+        end
+      end
+    else
+    
+      @result.errors.each do |error|
+        @order.errors.add(:base, error.message)
+      end
+
+      respond_to do |format|
         format.html { render :action => "new" }
         format.json { render :json => @order.errors, :status => :unprocessable_entity }
       end
     end
+
   end
 
   # PUT /orders/1
