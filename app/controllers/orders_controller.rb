@@ -65,8 +65,16 @@ class OrdersController < ApplicationController
     transaction.save
 
     if @result.success?
+      current_account.update_attributes(:customer_id => @result.customer.id)
+
+      @subscribe = Braintree::Subscription.create(
+        :payment_method_token => @result.customer.credit_cards[0].token,
+        :plan_id => "v28w"
+      )
+
       respond_to do |format|
         if @order.save
+
           transaction.update_attributes(:order => @order)
           format.html { redirect_to @order, :notice => 'Order was successfully created' }
           format.json { render :json => @order, :status => :created, :location => @order }
