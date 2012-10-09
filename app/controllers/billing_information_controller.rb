@@ -97,14 +97,14 @@ class BillingInformationController < ApplicationController
   # PUT /orders/1
   # PUT /orders/1.json
   def update
-    @order = Order.find(params[:id])
+    @order = Order.find(params[:order][:id])
 
     respond_to do |format|
       if @order.update_attributes(params[:order])
-        format.html { redirect_to @order, :notice => 'Order was successfully updated.' }
+        format.html { redirect_to :billing, :notice => 'Order was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render :action => "edit" }
+        format.html { render :action => "show" }
         format.json { render :json => @order.errors, :status => :unprocessable_entity }
       end
     end
