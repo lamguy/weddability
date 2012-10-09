@@ -47,6 +47,9 @@ class BillingInformationController < ApplicationController
 
       if @result.success?
 
+        # mask the credit card number to make sure no one can take advantage of it
+        @order.card_number = transaction.mask @order.card_number
+
         @subscribe = Braintree::Subscription.create(
           :payment_method_token => @result.customer.credit_cards[0].token,
           :plan_id => "v28w"
