@@ -8,6 +8,7 @@ Weddability::Application.routes.draw do
 
   get '/billing' => 'billing_information#show', :as => 'billing'
   post '/billing' => 'billing_information#create', :as => 'billing'
+  put '/billing' => 'billing_information#update', :as => 'billing'
 
   match "/robots.txt" => RobotsGenerator
 
