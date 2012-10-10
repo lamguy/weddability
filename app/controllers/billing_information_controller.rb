@@ -28,6 +28,7 @@ class BillingInformationController < ApplicationController
         :last_name => @order.address.last_name,
         :email => current_account.email,
         :credit_card => {
+          :cardholder_name => @order.address.first_name + " " + @order.address.last_name,
           :number => @order.card_number,
           :expiration_date => '05/2015',
           :billing_address => {
@@ -99,8 +100,64 @@ class BillingInformationController < ApplicationController
   def update
     @order = Order.find(params[:order][:id])
 
+    @order.card_number = params[:order][:card_number]
+    @order.address_attributes = params[:order][:address_attributes]
+
+    if @order.card_number_changed?
+      @customer_changed = Braintree::Customer.update(
+        current_account.customer_id,
+        :credit_card => {
+          :cardholder_name => @order.address.first_name + " " + @order.address.last_name,
+          :number => @order.card_number,
+          :expiration_date => "06/2013",
+          :options => {
+            :update_existing_token => current_account.payment_token,
+          },
+          :billing_address => {
+            :street_address => @order.address.street_address,
+            :extended_address => @order.address.extended_address,
+            :locality => @order.address.city,
+            :region => @order.address.state,
+            :postal_code => @order.address.zip,
+            :country_code_alpha2 => @order.address.country
+          }
+        }
+      )  
+    elsif @order.address.changed?
+      @customer_changed = Braintree::Customer.update(
+        current_account.customer_id,
+        :first_name => @order.address.first_name,
+        :last_name => @order.address.last_name,
+        :credit_card => {
+          :cardholder_name => @order.address.first_name + " " + @order.address.last_name,
+          :options => {
+            :update_existing_token => current_account.payment_token,
+          },
+          :billing_address => {
+            :street_address => @order.address.street_address,
+            :extended_address => @order.address.extended_address,
+            :locality => @order.address.city,
+            :region => @order.address.state,
+            :postal_code => @order.address.zip,
+            :country_code_alpha2 => @order.address.country
+          }
+        }
+      )       
+    end
+
+    # No order# has yet been associated to this transaction. 
+    # The idea is to keep tracking all transaction, either failure or success
+    transaction = OrderTransaction.new(:result => @customer_changed, :order => @order)
+    transaction.save
+
     respond_to do |format|
-      if @order.update_attributes(params[:order])
+
+      if @order.update_attributes(params[:order]) 
+        # mask the credit card number to make sure no one can take advantage of it
+        @order.card_number = transaction.mask @order.card_number
+            
+        @order.update_attributes(:card_number => @order.card_number)
+
         format.html { redirect_to :billing, :notice => 'Order was successfully updated.' }
         format.json { head :no_content }
       else
