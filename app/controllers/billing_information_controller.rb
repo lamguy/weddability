@@ -28,6 +28,7 @@ class BillingInformationController < ApplicationController
         :last_name => @order.address.last_name,
         :email => current_account.email,
         :credit_card => {
+          :cardholder_name => @order.address.first_name + " " + @order.address.last_name,
           :number => @order.card_number,
           :expiration_date => '05/2015',
           :billing_address => {
@@ -46,6 +47,9 @@ class BillingInformationController < ApplicationController
       transaction.save
 
       if @result.success?
+
+        # mask the credit card number to make sure no one can take advantage of it
+        @order.card_number = transaction.mask @order.card_number
 
         @subscribe = Braintree::Subscription.create(
           :payment_method_token => @result.customer.credit_cards[0].token,
@@ -94,14 +98,72 @@ class BillingInformationController < ApplicationController
   # PUT /orders/1
   # PUT /orders/1.json
   def update
-    @order = Order.find(params[:id])
+    @order = Order.find(params[:order][:id])
+
+    @order.card_number = params[:order][:card_number]
+    @order.address_attributes = params[:order][:address_attributes]
+
+    # The idea is to keep tracking all transaction, either failure or success
+    transaction = OrderTransaction.new(:result => @customer_changed, :order => @order)
+
+    if @order.valid?
+      if @order.card_number_changed?
+        @customer_changed = Braintree::Customer.update(
+          current_account.customer_id,
+          :credit_card => {
+            :cardholder_name => @order.address.first_name + " " + @order.address.last_name,
+            :number => @order.card_number,
+            :expiration_date => "06/2013",
+            :options => {
+              :update_existing_token => current_account.payment_token,
+            },
+            :billing_address => {
+              :street_address => @order.address.street_address,
+              :extended_address => @order.address.extended_address,
+              :locality => @order.address.city,
+              :region => @order.address.state,
+              :postal_code => @order.address.zip,
+              :country_code_alpha2 => @order.address.country
+            }
+          }
+        )  
+        transaction.save
+      elsif @order.address.changed?
+        @customer_changed = Braintree::Customer.update(
+          current_account.customer_id,
+          :first_name => @order.address.first_name,
+          :last_name => @order.address.last_name,
+          :credit_card => {
+            :cardholder_name => @order.address.first_name + " " + @order.address.last_name,
+            :options => {
+              :update_existing_token => current_account.payment_token,
+            },
+            :billing_address => {
+              :street_address => @order.address.street_address,
+              :extended_address => @order.address.extended_address,
+              :locality => @order.address.city,
+              :region => @order.address.state,
+              :postal_code => @order.address.zip,
+              :country_code_alpha2 => @order.address.country
+            }
+          }
+        )       
+        transaction.save
+      end
+    end
 
     respond_to do |format|
-      if @order.update_attributes(params[:order])
-        format.html { redirect_to @order, :notice => 'Order was successfully updated.' }
+
+      if @order.update_attributes(params[:order]) 
+        # mask the credit card number to make sure no one can take advantage of it
+        @order.card_number = transaction.mask @order.card_number
+            
+        @order.update_attributes(:card_number => @order.card_number)
+
+        format.html { redirect_to :billing, :notice => 'Order was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render :action => "edit" }
+        format.html { render :action => "show" }
         format.json { render :json => @order.errors, :status => :unprocessable_entity }
       end
     end
